@@ -1,65 +1,117 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { motion } from "framer-motion";
+import { ArrowRight, Brain, FileText, Zap } from "lucide-react";
+import Link from "next/link";
+
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* Navbar */}
+      <header className="flex justify-between items-center max-w-6xl mx-auto py-6 px-6">
+        <h1 className="text-2xl font-bold tracking-tight">
+          RAG<span className="text-indigo-500">Genie</span>
+        </h1>
+        <nav className="flex items-center gap-6">
+          <Link href="#features" className="text-gray-300 hover:text-white transition">
+            Features
+          </Link>
+          <Link href="#about" className="text-gray-300 hover:text-white transition">
+            About
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/signin" className="px-4 py-2 text-sm rounded-lg border border-gray-600 hover:bg-gray-700 transition">
+              Sign In
+            </Link>
+            <Link href="/signup" className="px-4 py-2 text-sm rounded-lg bg-indigo-600 hover:bg-indigo-700 transition">
+              Sign Up
+            </Link>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center mt-16 px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl md:text-6xl font-extrabold max-w-3xl mb-6"
+        >
+          Ask <span className="text-indigo-500">Anything</span> From Your Documents
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-lg text-gray-300 max-w-2xl mb-10"
+        >
+          RAGGenie is an AI-powered assistant that finds precise answers from your uploaded files using cutting-edge retrieval-augmented generation
+          technology.
+        </motion.p>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.6 }} className="flex gap-4">
+          <Link href="/signup" className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-medium flex items-center gap-2 transition">
+            Get Started <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link href="/signin" className="px-6 py-3 border border-gray-600 hover:bg-gray-800 rounded-xl font-medium transition">
+            Sign In
+          </Link>
+        </motion.div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="mt-32 px-6 max-w-6xl mx-auto">
+        <h3 className="text-3xl font-semibold text-center mb-12">
+          Why Choose <span className="text-indigo-500">RAGGenie</span>?
+        </h3>
+        <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6 text-center"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Brain className="w-10 h-10 text-indigo-400 mx-auto mb-4" />
+            <h4 className="text-lg font-semibold mb-2">Smart AI Retrieval</h4>
+            <p className="text-gray-400">Combines retrieval and generation to deliver factual, context-aware answers directly from your documents.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6 text-center"
           >
-            Documentation
-          </a>
+            <FileText className="w-10 h-10 text-indigo-400 mx-auto mb-4" />
+            <h4 className="text-lg font-semibold mb-2">Multi-File Support</h4>
+            <p className="text-gray-400">Upload PDFs, Word docs, or text files and get instant, cross-document insights.</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6 text-center"
+          >
+            <Zap className="w-10 h-10 text-indigo-400 mx-auto mb-4" />
+            <h4 className="text-lg font-semibold mb-2">Fast & Accurate</h4>
+            <p className="text-gray-400">Optimized for speed and accuracy so you get meaningful results in seconds.</p>
+          </motion.div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="mt-32 px-6 max-w-4xl mx-auto text-center">
+        <h3 className="text-3xl font-semibold mb-4">About the Product</h3>
+        <p className="text-gray-300 leading-relaxed">
+          RAGGenie uses cutting-edge retrieval-augmented generation to connect your documents with advanced language models. Instead of relying on
+          pre-trained knowledge alone, it fetches real data from your uploaded content — giving you answers that are both accurate and grounded in
+          your own files. Perfect for students, researchers, and professionals who want clarity without the chaos.
+        </p>
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-24 py-10 text-center text-gray-500 border-t border-gray-800">
+        © {new Date().getFullYear()} RAGGenie. All rights reserved.
+      </footer>
+    </main>
   );
 }
