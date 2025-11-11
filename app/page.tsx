@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Brain, FileText, Zap } from "lucide-react";
 import Link from "next/link";
 
-export default function LandingPage() {
+export default function Home() {
   return (
     <main className="min-h-screen bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       {/* Navbar */}
@@ -13,12 +13,12 @@ export default function LandingPage() {
           RAG<span className="text-indigo-500">Genie</span>
         </h1>
         <nav className="flex items-center gap-6">
-          <Link href="#features" className="text-gray-300 hover:text-white transition">
+          {/* <Link href="#features" className="text-gray-300 hover:text-white transition">
             Features
           </Link>
           <Link href="#about" className="text-gray-300 hover:text-white transition">
             About
-          </Link>
+          </Link> */}
           <div className="flex items-center gap-4">
             <Link href="/signin" className="px-4 py-2 text-sm rounded-lg border border-gray-600 hover:bg-gray-700 transition">
               Sign In
